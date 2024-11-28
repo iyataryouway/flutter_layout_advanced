@@ -1,24 +1,21 @@
 import 'package:flutter/material.dart';
 
-List<String> categories = [
-  'Category 1',
-  'Category 2',
-  'Category 3',
-  'Category 4',
-  'Category 5',
-  'Category 6',
-  'Category 7',
-  'Category 8',
-];
+List<String> generate() {
+  List<String> imageList = [];
+  for (var i = 1; i <= 8; i++) {
+    imageList.add('assets/images/Image $i.jpg');
+  }
+  return imageList;
+}
+
+List<String> categories = generate();
 
 List<Widget> numbers = categories.map((category) {
   return Card(
     color: Colors.red,
-    child: Text(category,
-        textAlign: TextAlign.center,
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 25,
-        )),
+    child: Image.asset(
+      category, // Access the string directly
+      fit: BoxFit.cover,
+    ),
   );
 }).toList();
